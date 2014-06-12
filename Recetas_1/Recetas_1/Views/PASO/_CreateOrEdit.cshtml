@@ -1,0 +1,36 @@
+@model Recetas_1.Models.PASO
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.IDRECETA)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.IDRECETA)
+    @Html.ValidationMessageFor(model => model.IDRECETA)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.NUMEROPASO)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.NUMEROPASO)
+    @Html.ValidationMessageFor(model => model.NUMEROPASO)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.DESCRIPCION)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.DESCRIPCION)
+    @Html.ValidationMessageFor(model => model.DESCRIPCION)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.FOTO)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.FOTO)
+    @Html.ValidationMessageFor(model => model.FOTO)
+</div>
+

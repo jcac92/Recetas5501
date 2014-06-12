@@ -1,0 +1,47 @@
+@model IEnumerable<Recetas_1.Models.ETIQUETA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            IDRECETA
+        </th>
+        <th>
+            NOMBRE
+        </th>
+        <th>
+            RECETA
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDETIQUETA }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDETIQUETA }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDETIQUETA })
+        </td>
+        <td>
+			@item.IDRECETA
+        </td>
+        <td>
+			@item.NOMBRE
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.RECETA).ToString()
+        </td>
+    </tr>
+}
+
+</table>
+
+

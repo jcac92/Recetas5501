@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Entities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="ETIQUETA" EntityType="Model.ETIQUETA" />
+    <EntitySet Name="INGREDIENTE" EntityType="Model.INGREDIENTE" />
+    <EntitySet Name="PASO" EntityType="Model.PASO" />
+    <EntitySet Name="RECETA" EntityType="Model.RECETA" />
+    <AssociationSet Name="FK_ETIQUETA_REFERENCE_RECETA" Association="Model.FK_ETIQUETA_REFERENCE_RECETA">
+      <End Role="RECETA" EntitySet="RECETA" />
+      <End Role="ETIQUETA" EntitySet="ETIQUETA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_INGREDIE_REFERENCE_PASO" Association="Model.FK_INGREDIE_REFERENCE_PASO">
+      <End Role="PASO" EntitySet="PASO" />
+      <End Role="INGREDIENTE" EntitySet="INGREDIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PASO_REFERENCE_RECETA" Association="Model.FK_PASO_REFERENCE_RECETA">
+      <End Role="RECETA" EntitySet="RECETA" />
+      <End Role="PASO" EntitySet="PASO" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ETIQUETA">
+    <Key>
+      <PropertyRef Name="IDETIQUETA" />
+    </Key>
+    <Property Name="IDETIQUETA" Type="Int32" Nullable="false" />
+    <Property Name="IDRECETA" Type="Int32" Nullable="false" />
+    <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="RECETA" Relationship="Model.FK_ETIQUETA_REFERENCE_RECETA" FromRole="ETIQUETA" ToRole="RECETA" />
+  </EntityType>
+  <EntityType Name="INGREDIENTE">
+    <Key>
+      <PropertyRef Name="IDINGREDIENTE" />
+    </Key>
+    <Property Name="IDINGREDIENTE" Type="Int32" Nullable="false" />
+    <Property Name="IDPASO" Type="Int32" Nullable="false" />
+    <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CANTIDAD" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="PASO" Relationship="Model.FK_INGREDIE_REFERENCE_PASO" FromRole="INGREDIENTE" ToRole="PASO" />
+  </EntityType>
+  <EntityType Name="PASO">
+    <Key>
+      <PropertyRef Name="IDPASO" />
+    </Key>
+    <Property Name="IDPASO" Type="Int32" Nullable="false" />
+    <Property Name="IDRECETA" Type="Int32" Nullable="false" />
+    <Property Name="NUMEROPASO" Type="Int32" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+    <Property Name="FOTO" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="INGREDIENTE" Relationship="Model.FK_INGREDIE_REFERENCE_PASO" FromRole="PASO" ToRole="INGREDIENTE" />
+    <NavigationProperty Name="RECETA" Relationship="Model.FK_PASO_REFERENCE_RECETA" FromRole="PASO" ToRole="RECETA" />
+  </EntityType>
+  <EntityType Name="RECETA">
+    <Key>
+      <PropertyRef Name="IDRECETA" />
+    </Key>
+    <Property Name="IDRECETA" Type="Int32" Nullable="false" />
+    <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="PORCIONES" Type="Int32" />
+    <Property Name="COMPLEJIDAD" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+    <Property Name="TIEMPO" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="PAIS" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="FOTO" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="TIPOPREPARACION" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="ETIQUETA" Relationship="Model.FK_ETIQUETA_REFERENCE_RECETA" FromRole="RECETA" ToRole="ETIQUETA" />
+    <NavigationProperty Name="PASO" Relationship="Model.FK_PASO_REFERENCE_RECETA" FromRole="RECETA" ToRole="PASO" />
+  </EntityType>
+  <Association Name="FK_ETIQUETA_REFERENCE_RECETA">
+    <End Role="RECETA" Type="Model.RECETA" Multiplicity="1" />
+    <End Role="ETIQUETA" Type="Model.ETIQUETA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RECETA">
+        <PropertyRef Name="IDRECETA" />
+      </Principal>
+      <Dependent Role="ETIQUETA">
+        <PropertyRef Name="IDRECETA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_INGREDIE_REFERENCE_PASO">
+    <End Role="PASO" Type="Model.PASO" Multiplicity="1" />
+    <End Role="INGREDIENTE" Type="Model.INGREDIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PASO">
+        <PropertyRef Name="IDPASO" />
+      </Principal>
+      <Dependent Role="INGREDIENTE">
+        <PropertyRef Name="IDPASO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PASO_REFERENCE_RECETA">
+    <End Role="RECETA" Type="Model.RECETA" Multiplicity="1" />
+    <End Role="PASO" Type="Model.PASO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RECETA">
+        <PropertyRef Name="IDRECETA" />
+      </Principal>
+      <Dependent Role="PASO">
+        <PropertyRef Name="IDRECETA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,83 @@
+@model IEnumerable<Recetas_1.Models.RECETA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            NOMBRE
+        </th>
+        <th>
+            PORCIONES
+        </th>
+        <th>
+            COMPLEJIDAD
+        </th>
+        <th>
+            TIEMPO
+        </th>
+        <th>
+            PAIS
+        </th>
+        <th>
+            FOTO
+        </th>
+        <th>
+            TIPOPREPARACION
+        </th>
+        <th>
+            ETIQUETA
+        </th>
+        <th>
+            PASO
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDRECETA }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDRECETA }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDRECETA })
+        </td>
+        <td>
+			@item.NOMBRE
+        </td>
+        <td>
+			@item.PORCIONES
+        </td>
+        <td>
+			@item.COMPLEJIDAD
+        </td>
+        <td>
+			@item.TIEMPO
+        </td>
+        <td>
+			@item.PAIS
+        </td>
+        <td>
+			@item.FOTO
+        </td>
+        <td>
+			@item.TIPOPREPARACION
+        </td>
+        <td>
+			@(item.ETIQUETA == null ? "None" : item.ETIQUETA.Count.ToString())
+        </td>
+        <td>
+			@(item.PASO == null ? "None" : item.PASO.Count.ToString())
+        </td>
+    </tr>
+}
+
+</table>
+
+

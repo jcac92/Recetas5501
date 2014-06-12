@@ -1,0 +1,29 @@
+@model Recetas_1.Models.INGREDIENTE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>INGREDIENTE</legend>
+
+    <div class="display-label">IDPASO</div>
+    <div class="display-field">@Model.IDPASO</div>
+
+    <div class="display-label">NOMBRE</div>
+    <div class="display-field">@Model.NOMBRE</div>
+
+    <div class="display-label">CANTIDAD</div>
+    <div class="display-field">@Model.CANTIDAD</div>
+
+    <div class="display-label">PASO</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.PASO).ToString()</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.IDINGREDIENTE }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

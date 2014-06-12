@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="ETIQUETA">
+      <EntityTypeMapping TypeName="Model.ETIQUETA">
+        <MappingFragment StoreEntitySet="ETIQUETA">
+          <ScalarProperty Name="IDETIQUETA" ColumnName="IDETIQUETA" />
+          <ScalarProperty Name="IDRECETA" ColumnName="IDRECETA" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INGREDIENTE">
+      <EntityTypeMapping TypeName="Model.INGREDIENTE">
+        <MappingFragment StoreEntitySet="INGREDIENTE">
+          <ScalarProperty Name="IDINGREDIENTE" ColumnName="IDINGREDIENTE" />
+          <ScalarProperty Name="IDPASO" ColumnName="IDPASO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PASO">
+      <EntityTypeMapping TypeName="Model.PASO">
+        <MappingFragment StoreEntitySet="PASO">
+          <ScalarProperty Name="IDPASO" ColumnName="IDPASO" />
+          <ScalarProperty Name="IDRECETA" ColumnName="IDRECETA" />
+          <ScalarProperty Name="NUMEROPASO" ColumnName="NUMEROPASO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="FOTO" ColumnName="FOTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RECETA">
+      <EntityTypeMapping TypeName="Model.RECETA">
+        <MappingFragment StoreEntitySet="RECETA">
+          <ScalarProperty Name="IDRECETA" ColumnName="IDRECETA" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="PORCIONES" ColumnName="PORCIONES" />
+          <ScalarProperty Name="COMPLEJIDAD" ColumnName="COMPLEJIDAD" />
+          <ScalarProperty Name="TIEMPO" ColumnName="TIEMPO" />
+          <ScalarProperty Name="PAIS" ColumnName="PAIS" />
+          <ScalarProperty Name="FOTO" ColumnName="FOTO" />
+          <ScalarProperty Name="TIPOPREPARACION" ColumnName="TIPOPREPARACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

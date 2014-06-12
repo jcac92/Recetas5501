@@ -1,0 +1,60 @@
+@model Recetas_1.Models.RECETA
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.NOMBRE)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.NOMBRE)
+    @Html.ValidationMessageFor(model => model.NOMBRE)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.PORCIONES)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.PORCIONES)
+    @Html.ValidationMessageFor(model => model.PORCIONES)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.COMPLEJIDAD)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.COMPLEJIDAD)
+    @Html.ValidationMessageFor(model => model.COMPLEJIDAD)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.TIEMPO)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.TIEMPO)
+    @Html.ValidationMessageFor(model => model.TIEMPO)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.PAIS)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.PAIS)
+    @Html.ValidationMessageFor(model => model.PAIS)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.FOTO)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.FOTO)
+    @Html.ValidationMessageFor(model => model.FOTO)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.TIPOPREPARACION)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.TIPOPREPARACION)
+    @Html.ValidationMessageFor(model => model.TIPOPREPARACION)
+</div>
+

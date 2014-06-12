@@ -1,0 +1,47 @@
+@model Recetas_1.Models.RECETA
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>RECETA</legend>
+
+    <div class="display-label">NOMBRE</div>
+    <div class="display-field">@Model.NOMBRE</div>
+
+    <div class="display-label">PORCIONES</div>
+    <div class="display-field">@Model.PORCIONES</div>
+
+    <div class="display-label">COMPLEJIDAD</div>
+    <div class="display-field">@Model.COMPLEJIDAD</div>
+
+    <div class="display-label">TIEMPO</div>
+    <div class="display-field">@Model.TIEMPO</div>
+
+    <div class="display-label">PAIS</div>
+    <div class="display-field">@Model.PAIS</div>
+
+    <div class="display-label">FOTO</div>
+    <div class="display-field">@Model.FOTO</div>
+
+    <div class="display-label">TIPOPREPARACION</div>
+    <div class="display-field">@Model.TIPOPREPARACION</div>
+
+    <div class="display-label">ETIQUETA</div>
+    <div class="display-field">@(Model.ETIQUETA == null ? "None" : Model.ETIQUETA.Count.ToString())</div>
+
+    <div class="display-label">PASO</div>
+    <div class="display-field">@(Model.PASO == null ? "None" : Model.PASO.Count.ToString())</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+
