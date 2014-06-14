@@ -20,9 +20,10 @@ namespace Recetas_1.Models
             this.ETIQUETA = new HashSet<ETIQUETA>();
             this.PASO = new HashSet<PASO>();
         }
-    
+
         [Key]
         public int IDRECETA { get; set; }
+        public int USERID { get; set; }
         public string NOMBRE { get; set; }
         public Nullable<int> PORCIONES { get; set; }
         public string COMPLEJIDAD { get; set; }
@@ -33,5 +34,30 @@ namespace Recetas_1.Models
     
         public virtual ICollection<ETIQUETA> ETIQUETA { get; set; }
         public virtual ICollection<PASO> PASO { get; set; }
+
+        /*
+        * Este método retorna una lista con todos los ingredientes de la receta.
+        * Para ello utiliza el método de la clase PASO, que devuelve los ingredientes de ese paso.
+        * AQUÍ SE UTILIZA EL PATRÓN DELEGATE.
+        */
+        public ICollection<INGREDIENTE> getListaIngredientes()
+        {
+            ICollection<INGREDIENTE> listaIngredientes = new HashSet<INGREDIENTE>();
+
+            foreach (PASO p in PASO)
+            {
+                foreach (INGREDIENTE i in p.getIngredientes())
+                {
+                    listaIngredientes.Add(i);
+                }
+            }
+
+            return listaIngredientes;
+        }
+
+        public ICollection<ETIQUETA> getListaEtiquetas()
+        {
+            return this.ETIQUETA;
+        }
     }
 }

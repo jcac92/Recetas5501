@@ -13,6 +13,9 @@
     <tr>
         <th></th>
         <th>
+            USERID
+        </th>
+        <th>
             NOMBRE
         </th>
         <th>
@@ -47,6 +50,9 @@
             @Html.ActionLink("Edit", "Edit", new { id=item.IDRECETA }) |
             @Html.ActionLink("Details", "Details", new { id=item.IDRECETA }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.IDRECETA })
+        </td>
+        <td>
+			@item.USERID
         </td>
         <td>
 			@item.NOMBRE

@@ -54,6 +54,7 @@
       <PropertyRef Name="IDRECETA" />
     </Key>
     <Property Name="IDRECETA" Type="Int32" Nullable="false" />
+    <Property Name="USERID" Type="Int32" Nullable="false" />
     <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
     <Property Name="PORCIONES" Type="Int32" />
     <Property Name="COMPLEJIDAD" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />

@@ -35,6 +35,7 @@
       <EntityTypeMapping TypeName="Model.RECETA">
         <MappingFragment StoreEntitySet="RECETA">
           <ScalarProperty Name="IDRECETA" ColumnName="IDRECETA" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
           <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
           <ScalarProperty Name="PORCIONES" ColumnName="PORCIONES" />
           <ScalarProperty Name="COMPLEJIDAD" ColumnName="COMPLEJIDAD" />

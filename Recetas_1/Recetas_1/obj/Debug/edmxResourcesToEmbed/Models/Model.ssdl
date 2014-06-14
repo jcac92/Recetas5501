@@ -50,6 +50,7 @@
       <PropertyRef Name="IDRECETA" />
     </Key>
     <Property Name="IDRECETA" Type="int" Nullable="false" />
+    <Property Name="USERID" Type="int" Nullable="false" />
     <Property Name="NOMBRE" Type="varchar" Nullable="false" MaxLength="100" />
     <Property Name="PORCIONES" Type="int" />
     <Property Name="COMPLEJIDAD" Type="varchar" Nullable="false" MaxLength="5" />

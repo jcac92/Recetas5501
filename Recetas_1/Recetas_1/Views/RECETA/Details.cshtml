@@ -1,41 +1,50 @@
 @model Recetas_1.Models.RECETA
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Mis Recetas";
 }
 
-<h2>Details</h2>
+<h1>@Model.NOMBRE</h1>
 
-<fieldset>
-    <legend>RECETA</legend>
-
-    <div class="display-label">NOMBRE</div>
-    <div class="display-field">@Model.NOMBRE</div>
-
-    <div class="display-label">PORCIONES</div>
-    <div class="display-field">@Model.PORCIONES</div>
-
-    <div class="display-label">COMPLEJIDAD</div>
-    <div class="display-field">@Model.COMPLEJIDAD</div>
-
-    <div class="display-label">TIEMPO</div>
-    <div class="display-field">@Model.TIEMPO</div>
-
-    <div class="display-label">PAIS</div>
-    <div class="display-field">@Model.PAIS</div>
-
-    <div class="display-label">FOTO</div>
     <div class="display-field">@Model.FOTO</div>
 
-    <div class="display-label">TIPOPREPARACION</div>
+<h5>Porciones</h5>
+    <div class="display-field">@Model.PORCIONES</div>
+
+<h5>Complejidad</h5>
+    <div class="display-field">@Model.COMPLEJIDAD</div>
+
+<h5>Duración</h5>
+    <div class="display-field">@Model.TIEMPO</div>
+
+<h5>País de origen</h5>
+    <div class="display-field">@Model.PAIS</div>
+
+<h5>Preparación</h5>
     <div class="display-field">@Model.TIPOPREPARACION</div>
 
-    <div class="display-label">ETIQUETA</div>
-    <div class="display-field">@(Model.ETIQUETA == null ? "None" : Model.ETIQUETA.Count.ToString())</div>
+<h5>Etiquetas</h5>
+@foreach (var item in Model.getListaEtiquetas())
+{
+    <div class="display-field">@item.NOMBRE</div>
+}
 
-    <div class="display-label">PASO</div>
-    <div class="display-field">@(Model.PASO == null ? "None" : Model.PASO.Count.ToString())</div>
-</fieldset>
+<h3>Lista de Ingredientes</h3>
+<table>
+@foreach (var item in Model.getListaIngredientes())
+{
+    <tr>
+        <td></td>
+        <td>
+            @item.CANTIDAD
+        </td>
+        <td>
+            @item.NOMBRE
+        </td>
+    </tr>
+}
+</table>
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.IDRECETA }) |
     @Html.ActionLink("Back to List", "Index")
