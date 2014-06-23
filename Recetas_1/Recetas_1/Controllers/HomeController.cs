@@ -10,21 +10,21 @@ namespace Recetas_1.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Modifique esta plantilla para poner en marcha su aplicación ASP.NET MVC.";
+            ViewBag.Message = "Comienza ahora mismo a compartir tus recetas con el mundo";
 
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Página de descripción de la aplicación.";
+            ViewBag.Message = "¿Qué es Recetas5501?";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Página de contacto.";
+            ViewBag.Message = "Ponte en contacto con nosotros";
 
             return View();
         }

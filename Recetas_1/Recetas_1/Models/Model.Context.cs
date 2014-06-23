@@ -29,5 +29,7 @@ namespace Recetas_1.Models
         public DbSet<INGREDIENTE> INGREDIENTE { get; set; }
         public DbSet<PASO> PASO { get; set; }
         public DbSet<RECETA> RECETA { get; set; }
+        public DbSet<ROLINTERNACIONAL> ROLINTERNACIONAL { get; set; }
+        public DbSet<ROLNACIONAL> ROLNACIONAL { get; set; }
     }
 }

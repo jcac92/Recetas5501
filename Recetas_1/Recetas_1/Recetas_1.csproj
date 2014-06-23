@@ -173,6 +173,8 @@
     <Compile Include="Controllers\INGREDIENTEController.cs" />
     <Compile Include="Controllers\PASOController.cs" />
     <Compile Include="Controllers\RECETAController.cs" />
+    <Compile Include="Controllers\ROLINTERNACIONALController.cs" />
+    <Compile Include="Controllers\ROLNACIONALController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -209,6 +211,15 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RECETARepository.cs" />
+    <Compile Include="Models\ROLINTERNACIONAL.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ROLINTERNACIONALRepository.cs" />
+    <Compile Include="Models\ROLNACIONAL.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ROLNACIONALRepository.cs" />
+    <Compile Include="Models\ROLORIGEN.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -272,6 +283,8 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Images\facebook.png" />
+    <Content Include="Images\Logo.png" />
     <Content Include="Models\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
@@ -363,9 +376,23 @@
     <Content Include="Views\RECETA\Details.cshtml" />
     <Content Include="Views\RECETA\Index.cshtml" />
     <Content Include="Views\RECETA\_CreateOrEdit.cshtml" />
+    <Content Include="Views\ROLNACIONAL\Create.cshtml" />
+    <Content Include="Views\ROLNACIONAL\Edit.cshtml" />
+    <Content Include="Views\ROLNACIONAL\Delete.cshtml" />
+    <Content Include="Views\ROLNACIONAL\Details.cshtml" />
+    <Content Include="Views\ROLNACIONAL\Index.cshtml" />
+    <Content Include="Views\ROLNACIONAL\_CreateOrEdit.cshtml" />
+    <Content Include="Views\ROLINTERNACIONAL\Create.cshtml" />
+    <Content Include="Views\ROLINTERNACIONAL\Edit.cshtml" />
+    <Content Include="Views\ROLINTERNACIONAL\Delete.cshtml" />
+    <Content Include="Views\ROLINTERNACIONAL\Details.cshtml" />
+    <Content Include="Views\ROLINTERNACIONAL\Index.cshtml" />
+    <Content Include="Views\ROLINTERNACIONAL\_CreateOrEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\Pasos\" />
+    <Folder Include="Images\Recetas\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -1,0 +1,23 @@
+@model Recetas_1.Models.ROLNACIONAL
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ROLNACIONAL</legend>
+
+    <div class="display-label">IDRECETA</div>
+    <div class="display-field">@Model.IDRECETA</div>
+
+    <div class="display-label">PROVINCIA</div>
+    <div class="display-field">@Model.PROVINCIA</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.IDROLNACIONAL }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

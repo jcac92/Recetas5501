@@ -24,16 +24,14 @@ namespace Recetas_1.Models
         public int IDPASO { get; set; }
         public int IDRECETA { get; set; }
         public int NUMEROPASO { get; set; }
+        [Required]
+        [DataType(DataType.MultilineText)]
         public string DESCRIPCION { get; set; }
         public string FOTO { get; set; }
     
         public virtual ICollection<INGREDIENTE> INGREDIENTE { get; set; }
         public virtual RECETA RECETA { get; set; }
 
-        /*
-        * Este método retorna una lista con todos los ingredientes del paso.
-        * ESTE MÉTODO SIRVE PARA UTILIZAR EL PATRÓN DELEGATE.
-        */
         public ICollection<INGREDIENTE> getIngredientes()
         {
             return this.INGREDIENTE;

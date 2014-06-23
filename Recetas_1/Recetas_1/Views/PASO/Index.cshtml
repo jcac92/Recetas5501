@@ -1,61 +1,34 @@
 @model IEnumerable<Recetas_1.Models.PASO>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Pasos";
 }
 
-<h2>Index</h2>
+<h2>Lista de Pasos</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table>
     <tr>
-        <th></th>
         <th>
-            IDRECETA
         </th>
         <th>
-            NUMEROPASO
+            Detalles
         </th>
         <th>
-            DESCRIPCION
-        </th>
-        <th>
-            FOTO
-        </th>
-        <th>
-            INGREDIENTE
-        </th>
-        <th>
-            RECETA
+            Acciones
         </th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDPASO }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDPASO }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDPASO })
-        </td>
-        <td>
-			@item.IDRECETA
-        </td>
-        <td>
 			@item.NUMEROPASO
         </td>
         <td>
 			@item.DESCRIPCION
         </td>
-        <td>
-			@item.FOTO
-        </td>
-        <td>
-			@(item.INGREDIENTE == null ? "None" : item.INGREDIENTE.Count.ToString())
-        </td>
-        <td>
-			@Html.DisplayTextFor(_ => item.RECETA).ToString()
+         <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.IDPASO }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.IDPASO })
         </td>
     </tr>
 }

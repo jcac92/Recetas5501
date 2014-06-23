@@ -12,6 +12,7 @@ namespace Recetas_1.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     
     public partial class RECETA
     {
@@ -20,14 +21,17 @@ namespace Recetas_1.Models
             this.ETIQUETA = new HashSet<ETIQUETA>();
             this.PASO = new HashSet<PASO>();
         }
-
+    
         [Key]
         public int IDRECETA { get; set; }
         public int USERID { get; set; }
+        [Required(ErrorMessage = "Se requiere un nombre para la receta")]
         public string NOMBRE { get; set; }
+        [Range(1, 5000, ErrorMessage = "El número de porciones debe ser mayor a 1")]
         public Nullable<int> PORCIONES { get; set; }
         public string COMPLEJIDAD { get; set; }
         public System.TimeSpan TIEMPO { get; set; }
+        [Required(ErrorMessage = "Se requiere un país de origen para la receta")]
         public string PAIS { get; set; }
         public string FOTO { get; set; }
         public string TIPOPREPARACION { get; set; }
@@ -36,9 +40,9 @@ namespace Recetas_1.Models
         public virtual ICollection<PASO> PASO { get; set; }
 
         /*
-        * Este método retorna una lista con todos los ingredientes de la receta.
-        * Para ello utiliza el método de la clase PASO, que devuelve los ingredientes de ese paso.
-        * AQUÍ SE UTILIZA EL PATRÓN DELEGATE.
+         * Este método retorna una lista con todos los ingredientes de la receta.
+         * Para ello utiliza el método de la clase PASO, que devuelve los ingredientes de ese paso.
+         * AQUÍ SE UTILIZA EL PATRÓN DELEGATE.  
         */
         public ICollection<INGREDIENTE> getListaIngredientes()
         {

@@ -1,26 +1,37 @@
 @model Recetas_1.Models.PASO
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Agregar paso";
 }
 
-<h2>Create</h2>
+<h2>Agrega un nuevo paso</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Create", "PASO", FormMethod.Post, new { EncType="multipart/form-data"})) {
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>PASO</legend>
 
 		@Html.Partial("_CreateOrEdit", Model)
 
+        <div class="editor-label">
+            <label for="fotoPaso">Selecciona una imagen para el paso</label>
+        </div>
+        <div class="editor-field">
+            <input type="file" id="fotoPaso" name="fotoPaso" />
+        </div>
+
+        <div class="editor-label">
+            <label for="ultimoPaso">¿último paso?</label>@Html.CheckBox("ultimoPaso", new { data_val = "true" })
+        </div>
+        
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Guardar paso" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Ver la lista de Pasos", "Index")
 </div>
 
 

@@ -6,21 +6,64 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Create", "RECETA", FormMethod.Post, new { EncType="multipart/form-data"}))
+{
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>RECETA</legend>
 
-		@Html.Partial("_CreateOrEdit", Model)
+        @Html.Partial("_CreateOrEdit", Model)
+
+        @{
+    List<SelectListItem> provincias = new List<SelectListItem>{
+                new SelectListItem{ Text = "San José", Value = "San José", Selected = true},
+                new SelectListItem{ Text = "Alajuela", Value = "Alajuela"},
+                new SelectListItem{ Text = "Cartago", Value = "Cartago"},
+                new SelectListItem{ Text = "Heredia", Value = "Heredia"},
+                new SelectListItem{ Text = "Guanacaste", Value = "Guanacaste"},
+                new SelectListItem{ Text = "Puntarenas", Value = "Puntarenas"},
+                new SelectListItem{ Text = "Limón", Value = "Limón"}};
+        }
+        <div class="editor-label">
+            <label for="provincia">Selecciona la provincia (Si tu receta es de Costa Rica)</label>
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("provincia", provincias)
+        </div>
+
+        @{
+    List<SelectListItem> regiones = new List<SelectListItem>{
+                new SelectListItem{ Text = "Norte América", Value = "Norte América"},
+                new SelectListItem{ Text = "América Central", Value = "América Central", Selected = true},
+                new SelectListItem{ Text = "Sud América", Value = "Sud América"},
+                new SelectListItem{ Text = "Caribe", Value = "Caribe"},
+                new SelectListItem{ Text = "Europa", Value = "Europa"},
+                new SelectListItem{ Text = "África", Value = "África"},
+                new SelectListItem{ Text = "Asia", Value = "Asia"},
+                new SelectListItem{ Text = "Oceanía", Value = "Oceanía"}};
+        }
+        <div class="editor-label">
+            <label for="region">Selecciona la región</label>
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("region", regiones)
+        </div>
+
+        <div class="editor-label">
+            <label for="fotoReceta">Selecciona una imagen para la receta</label>
+        </div>
+        <div class="editor-field">
+            <input type="file" id="fotoReceta" name="fotoReceta" />
+        </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Crear" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Regresar a Mi lista de Recetas", "Index")
 </div>
 
 

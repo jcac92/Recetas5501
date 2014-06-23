@@ -10,6 +10,8 @@
           <EntitySet Name="INGREDIENTE" EntityType="Model.Store.INGREDIENTE" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PASO" EntityType="Model.Store.PASO" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="RECETA" EntityType="Model.Store.RECETA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ROLINTERNACIONAL" EntityType="Model.Store.ROLINTERNACIONAL" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ROLNACIONAL" EntityType="Model.Store.ROLNACIONAL" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_ETIQUETA_REFERENCE_RECETA" Association="Model.Store.FK_ETIQUETA_REFERENCE_RECETA">
             <End Role="RECETA" EntitySet="RECETA" />
             <End Role="ETIQUETA" EntitySet="ETIQUETA" />
@@ -27,7 +29,7 @@
           <Key>
             <PropertyRef Name="IDETIQUETA" />
           </Key>
-          <Property Name="IDETIQUETA" Type="int" Nullable="false" />
+          <Property Name="IDETIQUETA" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="IDRECETA" Type="int" Nullable="false" />
           <Property Name="NOMBRE" Type="varchar" Nullable="false" MaxLength="20" />
         </EntityType>
@@ -35,7 +37,7 @@
           <Key>
             <PropertyRef Name="IDINGREDIENTE" />
           </Key>
-          <Property Name="IDINGREDIENTE" Type="int" Nullable="false" />
+          <Property Name="IDINGREDIENTE" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="IDPASO" Type="int" Nullable="false" />
           <Property Name="NOMBRE" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="CANTIDAD" Type="varchar" Nullable="false" MaxLength="50" />
@@ -44,7 +46,7 @@
           <Key>
             <PropertyRef Name="IDPASO" />
           </Key>
-          <Property Name="IDPASO" Type="int" Nullable="false" />
+          <Property Name="IDPASO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="IDRECETA" Type="int" Nullable="false" />
           <Property Name="NUMEROPASO" Type="int" Nullable="false" />
           <Property Name="DESCRIPCION" Type="varchar" Nullable="false" MaxLength="300" />
@@ -54,7 +56,7 @@
           <Key>
             <PropertyRef Name="IDRECETA" />
           </Key>
-          <Property Name="IDRECETA" Type="int" Nullable="false" />
+          <Property Name="IDRECETA" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="USERID" Type="int" Nullable="false" />
           <Property Name="NOMBRE" Type="varchar" Nullable="false" MaxLength="100" />
           <Property Name="PORCIONES" Type="int" />
@@ -63,6 +65,22 @@
           <Property Name="PAIS" Type="varchar" MaxLength="25" />
           <Property Name="FOTO" Type="varchar" MaxLength="30" />
           <Property Name="TIPOPREPARACION" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="ROLINTERNACIONAL">
+          <Key>
+            <PropertyRef Name="IDROLINTERNACIONAL" />
+          </Key>
+          <Property Name="IDROLINTERNACIONAL" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IDRECETA" Type="int" Nullable="false" />
+          <Property Name="REGION" Type="varchar" Nullable="false" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="ROLNACIONAL">
+          <Key>
+            <PropertyRef Name="IDROLNACIONAL" />
+          </Key>
+          <Property Name="IDROLNACIONAL" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IDRECETA" Type="int" Nullable="false" />
+          <Property Name="PROVINCIA" Type="varchar" Nullable="false" MaxLength="20" />
         </EntityType>
         <Association Name="FK_ETIQUETA_REFERENCE_RECETA">
           <End Role="RECETA" Type="Model.Store.RECETA" Multiplicity="1" />
@@ -110,6 +128,8 @@
           <EntitySet Name="INGREDIENTE" EntityType="Model.INGREDIENTE" />
           <EntitySet Name="PASO" EntityType="Model.PASO" />
           <EntitySet Name="RECETA" EntityType="Model.RECETA" />
+          <EntitySet Name="ROLINTERNACIONAL" EntityType="Model.ROLINTERNACIONAL" />
+          <EntitySet Name="ROLNACIONAL" EntityType="Model.ROLNACIONAL" />
           <AssociationSet Name="FK_ETIQUETA_REFERENCE_RECETA" Association="Model.FK_ETIQUETA_REFERENCE_RECETA">
             <End Role="RECETA" EntitySet="RECETA" />
             <End Role="ETIQUETA" EntitySet="ETIQUETA" />
@@ -127,7 +147,7 @@
           <Key>
             <PropertyRef Name="IDETIQUETA" />
           </Key>
-          <Property Name="IDETIQUETA" Type="Int32" Nullable="false" />
+          <Property Name="IDETIQUETA" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="IDRECETA" Type="Int32" Nullable="false" />
           <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="RECETA" Relationship="Model.FK_ETIQUETA_REFERENCE_RECETA" FromRole="ETIQUETA" ToRole="RECETA" />
@@ -136,7 +156,7 @@
           <Key>
             <PropertyRef Name="IDINGREDIENTE" />
           </Key>
-          <Property Name="IDINGREDIENTE" Type="Int32" Nullable="false" />
+          <Property Name="IDINGREDIENTE" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="IDPASO" Type="Int32" Nullable="false" />
           <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="CANTIDAD" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
@@ -146,7 +166,7 @@
           <Key>
             <PropertyRef Name="IDPASO" />
           </Key>
-          <Property Name="IDPASO" Type="Int32" Nullable="false" />
+          <Property Name="IDPASO" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="IDRECETA" Type="Int32" Nullable="false" />
           <Property Name="NUMEROPASO" Type="Int32" Nullable="false" />
           <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
@@ -158,7 +178,7 @@
           <Key>
             <PropertyRef Name="IDRECETA" />
           </Key>
-          <Property Name="IDRECETA" Type="Int32" Nullable="false" />
+          <Property Name="IDRECETA" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="USERID" Type="Int32" Nullable="false" />
           <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
           <Property Name="PORCIONES" Type="Int32" />
@@ -169,6 +189,22 @@
           <Property Name="TIPOPREPARACION" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="ETIQUETA" Relationship="Model.FK_ETIQUETA_REFERENCE_RECETA" FromRole="RECETA" ToRole="ETIQUETA" />
           <NavigationProperty Name="PASO" Relationship="Model.FK_PASO_REFERENCE_RECETA" FromRole="RECETA" ToRole="PASO" />
+        </EntityType>
+        <EntityType Name="ROLINTERNACIONAL">
+          <Key>
+            <PropertyRef Name="IDROLINTERNACIONAL" />
+          </Key>
+          <Property Name="IDROLINTERNACIONAL" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="IDRECETA" Type="Int32" Nullable="false" />
+          <Property Name="REGION" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ROLNACIONAL">
+          <Key>
+            <PropertyRef Name="IDROLNACIONAL" />
+          </Key>
+          <Property Name="IDROLNACIONAL" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="IDRECETA" Type="Int32" Nullable="false" />
+          <Property Name="PROVINCIA" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
         </EntityType>
         <Association Name="FK_ETIQUETA_REFERENCE_RECETA">
           <End Role="RECETA" Type="Model.RECETA" Multiplicity="1" />
@@ -254,6 +290,24 @@
                 <ScalarProperty Name="PAIS" ColumnName="PAIS" />
                 <ScalarProperty Name="FOTO" ColumnName="FOTO" />
                 <ScalarProperty Name="TIPOPREPARACION" ColumnName="TIPOPREPARACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROLINTERNACIONAL">
+            <EntityTypeMapping TypeName="Model.ROLINTERNACIONAL">
+              <MappingFragment StoreEntitySet="ROLINTERNACIONAL">
+                <ScalarProperty Name="IDROLINTERNACIONAL" ColumnName="IDROLINTERNACIONAL" />
+                <ScalarProperty Name="IDRECETA" ColumnName="IDRECETA" />
+                <ScalarProperty Name="REGION" ColumnName="REGION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROLNACIONAL">
+            <EntityTypeMapping TypeName="Model.ROLNACIONAL">
+              <MappingFragment StoreEntitySet="ROLNACIONAL">
+                <ScalarProperty Name="IDROLNACIONAL" ColumnName="IDROLNACIONAL" />
+                <ScalarProperty Name="IDRECETA" ColumnName="IDRECETA" />
+                <ScalarProperty Name="PROVINCIA" ColumnName="PROVINCIA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

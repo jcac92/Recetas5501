@@ -46,5 +46,23 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ROLINTERNACIONAL">
+      <EntityTypeMapping TypeName="Model.ROLINTERNACIONAL">
+        <MappingFragment StoreEntitySet="ROLINTERNACIONAL">
+          <ScalarProperty Name="IDROLINTERNACIONAL" ColumnName="IDROLINTERNACIONAL" />
+          <ScalarProperty Name="IDRECETA" ColumnName="IDRECETA" />
+          <ScalarProperty Name="REGION" ColumnName="REGION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROLNACIONAL">
+      <EntityTypeMapping TypeName="Model.ROLNACIONAL">
+        <MappingFragment StoreEntitySet="ROLNACIONAL">
+          <ScalarProperty Name="IDROLNACIONAL" ColumnName="IDROLNACIONAL" />
+          <ScalarProperty Name="IDRECETA" ColumnName="IDRECETA" />
+          <ScalarProperty Name="PROVINCIA" ColumnName="PROVINCIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -3,8 +3,8 @@
     <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta charset="utf-8" />
-        <title>@ViewBag.Title - Mi aplicación ASP.NET MVC</title>
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <title>@ViewBag.Title - Recetas5501</title>
+        <link href="~/favicon.png" rel="shortcut icon" type="image/png" />
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
@@ -13,7 +13,7 @@
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("su logotipo aquí", "Index", "Home")</p>
+                    <p>@Html.ActionLink(" ", "Index", "Home", null, new { @class = "site-logo"})</p>
                 </div>
                 <div class="float-right">
                     <section id="login">
@@ -36,10 +36,11 @@
                 @RenderBody()
             </section>
         </div>
+
         <footer>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET MVC</p>
+                    <p>&copy; @DateTime.Now.Year - Recetas5501</p>
                 </div>
             </div>
         </footer>

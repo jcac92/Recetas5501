@@ -17,7 +17,11 @@ else
         <p>
         @foreach (AuthenticationClientData p in Model)
         {
-            <button type="submit" name="provider" value="@p.AuthenticationClient.ProviderName" title="Inicie sesión con su cuenta de @p.DisplayName">@p.DisplayName</button>
+            if (p.DisplayName == "Facebook"){
+                <button type="submit" name="provider" value="@p.AuthenticationClient.ProviderName" title="Identifícate con @p.DisplayName"></button>
+            } else {
+                <button type="submit" name="provider" value="@p.AuthenticationClient.ProviderName" title="Identifícate con @p.DisplayName">@p.DisplayName</button>
+            }
         }
         </p>
     </fieldset>

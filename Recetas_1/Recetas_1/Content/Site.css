@@ -6,7 +6,6 @@
 
 body {
     background-color: #fff;
-    border-top: solid 10px #000;
     color: #333;
     font-size: .85em;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
@@ -99,20 +98,22 @@ h5, h6 {
 }
 
 #body {
-    background-color: #efeeef;
+    background-color: #c4ffe7;
     clear: both;
     padding-bottom: 35px;
+    height: auto;
+    min-height: 410px;
 }
 
-    .main-content {
-        background: url("../Images/accent.png") no-repeat;
-        padding-left: 10px;
-        padding-top: 30px;
-    }
+.main-content {
+    background: none;
+    padding-top: 30px;
+}
 
-    .featured + .main-content {
-        background: url("../Images/heroAccent.png") no-repeat;
-    }
+.featured + .main-content {
+    background: none;
+    padding-top: 30px;
+}
 
 header .content-wrapper {
     padding-top: 20px; 
@@ -120,11 +121,11 @@ header .content-wrapper {
 
 footer {
     clear: both;
-    background-color: #e2e2e2;
-    font-size: .8em;
+    background-color: #c81e23;
+    color: white;
+    font-size: 1.0em;
     height: 100px;
 }
-
 
 /* site title
 ----------------------------------------------------------*/
@@ -140,6 +141,13 @@ footer {
     color: #c8c8c8;
     outline: none;
     text-decoration: none;
+}
+
+.site-logo {
+    background: url('../Images/Logos/180x73.png') no-repeat top left;
+    display: block;
+    width: 174px;
+    height: 73px;
 }
 
 
@@ -373,7 +381,11 @@ aside {
     }
 
 #socialLoginList button {
-    margin-bottom: 12px;
+     background-image: url('../Images/facebook.png');
+     width: 256px;
+     height: 256px;
+     background-color: rgba(255, 255, 255, 0.00);
+     border: none;
 }
 
 #logoutForm {
@@ -657,7 +669,8 @@ tr.pager td {
     ----------------------------------------------------------*/
     .main-content,
     .featured + .main-content {
-        background-position: 10px 0;
+        background: none;
+        padding-top: 10px;
     }
 
     .content-wrapper {

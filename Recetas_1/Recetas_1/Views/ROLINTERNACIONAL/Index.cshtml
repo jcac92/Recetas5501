@@ -1,0 +1,41 @@
+@model IEnumerable<Recetas_1.Models.ROLINTERNACIONAL>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            IDRECETA
+        </th>
+        <th>
+            REGION
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDROLINTERNACIONAL }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDROLINTERNACIONAL }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDROLINTERNACIONAL })
+        </td>
+        <td>
+			@item.IDRECETA
+        </td>
+        <td>
+			@item.REGION
+        </td>
+    </tr>
+}
+
+</table>
+
+

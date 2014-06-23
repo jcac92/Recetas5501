@@ -22,5 +22,25 @@ namespace Recetas_1.Models
         public string CANTIDAD { get; set; }
     
         public virtual PASO PASO { get; set; }
+
+        public int getIdIngrediente()
+        {
+            return this.IDINGREDIENTE;
+        }
+
+        public int getIdPaso()
+        {
+            return this.IDPASO;
+        }
+
+        public string getNombre()
+        {
+            return this.NOMBRE;
+        }
+
+        public string getCantidad()
+        {
+            return this.CANTIDAD;
+        }
     }
 }

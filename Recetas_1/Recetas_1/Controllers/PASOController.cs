@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Recetas_1.Models;
+using System.IO;
 
 namespace Recetas_1.Controllers
 {   
@@ -24,9 +25,12 @@ namespace Recetas_1.Controllers
         //
         // GET: /PASO/
 
-        public ViewResult Index()
+        public ViewResult Index(int idReceta)
         {
-            return View(pasoRepository.AllIncluding(paso => paso.INGREDIENTE));
+            IEnumerable<PASO> pasosReceta = (from p in pasoRepository.All
+                                             where p.IDRECETA == idReceta
+                                             select p);
+            return View(pasosReceta);
         }
 
         //
@@ -49,12 +53,45 @@ namespace Recetas_1.Controllers
         // POST: /PASO/Create
 
         [HttpPost]
-        public ActionResult Create(PASO paso)
+        public ActionResult Create(PASO paso, HttpPostedFileBase fotoPaso, bool ultimoPaso)
         {
             if (ModelState.IsValid) {
+
+                //Lógica para insertar el nuevo Paso
                 pasoRepository.InsertOrUpdate(paso);
                 pasoRepository.Save();
-                return RedirectToAction("Index");
+
+                //ID del paso recién insertado
+                int idPaso = (from p in pasoRepository.All
+                              select p.IDPASO)
+                              .Max();
+
+                //Lógica para insertar la imagen
+                string nombreArchivo = Convert.ToString(idPaso) + Path.GetExtension(fotoPaso.FileName);
+
+                if (fotoPaso != null)
+                {
+                    if (fotoPaso.ContentLength > 0)
+                    {
+                        //Subir archivo de foto
+                        string rutaArchivo = Path.Combine(Server.MapPath("~/Images/Pasos"), nombreArchivo);
+                        fotoPaso.SaveAs(rutaArchivo);
+
+                        //Editar la receta guardada para agregar la ruta de la foto
+                        PASO editar = pasoRepository.Find(idPaso);
+                        editar.FOTO = "../../Images/Pasos/" + nombreArchivo;
+                        pasoRepository.InsertOrUpdate(editar);
+                        pasoRepository.Save();
+                    }
+                }
+                ///////////////////////////////
+
+                //Regresar a las recetas si es el último paso
+                if (ultimoPaso)
+                    return RedirectToAction("Index", "RECETA");
+                else
+                    return RedirectToAction("Create");
+
             } else {
 				return View();
 			}

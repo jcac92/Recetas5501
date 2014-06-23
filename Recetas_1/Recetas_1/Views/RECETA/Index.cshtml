@@ -1,89 +1,39 @@
 @model IEnumerable<Recetas_1.Models.RECETA>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Mis Recetas";
 }
 
-<h2>Index</h2>
+<h2>Mi lista de Recetas</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crea una nueva receta", "Create")
 </p>
+<div class="table">
 <table>
     <tr>
-        <th></th>
         <th>
-            USERID
+            Receta:
         </th>
         <th>
-            NOMBRE
-        </th>
-        <th>
-            PORCIONES
-        </th>
-        <th>
-            COMPLEJIDAD
-        </th>
-        <th>
-            TIEMPO
-        </th>
-        <th>
-            PAIS
-        </th>
-        <th>
-            FOTO
-        </th>
-        <th>
-            TIPOPREPARACION
-        </th>
-        <th>
-            ETIQUETA
-        </th>
-        <th>
-            PASO
+            Acciones:
         </th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDRECETA }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDRECETA }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDRECETA })
+            @item.NOMBRE
         </td>
         <td>
-			@item.USERID
-        </td>
-        <td>
-			@item.NOMBRE
-        </td>
-        <td>
-			@item.PORCIONES
-        </td>
-        <td>
-			@item.COMPLEJIDAD
-        </td>
-        <td>
-			@item.TIEMPO
-        </td>
-        <td>
-			@item.PAIS
-        </td>
-        <td>
-			@item.FOTO
-        </td>
-        <td>
-			@item.TIPOPREPARACION
-        </td>
-        <td>
-			@(item.ETIQUETA == null ? "None" : item.ETIQUETA.Count.ToString())
-        </td>
-        <td>
-			@(item.PASO == null ? "None" : item.PASO.Count.ToString())
+			@Html.ActionLink("Editar", "Edit", new { id=item.IDRECETA }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.IDRECETA }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.IDRECETA })
         </td>
     </tr>
 }
 
 </table>
+</div>
 
 

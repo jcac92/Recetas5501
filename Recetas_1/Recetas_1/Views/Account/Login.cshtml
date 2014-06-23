@@ -5,17 +5,17 @@
 }
 
 <hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
+    <h1>Inicia Sesión</h1>
 </hgroup>
 
 <section id="loginForm">
-<h2>Utilice una cuenta local para iniciar sesión.</h2>
+<h2>Utiliza tu cuenta para iniciar sesión</h2>
 @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Formulario de inicio de sesión</legend>
+        <legend>Ingresá tus datos</legend>
         <ol>
             <li>
                 @Html.LabelFor(m => m.UserName)
@@ -34,14 +34,11 @@
         </ol>
         <input type="submit" value="Iniciar sesión" />
     </fieldset>
-    <p>
-        @Html.ActionLink("Register", "Register") si no tiene ninguna cuenta.
-    </p>
 }
 </section>
 
 <section class="social" id="socialLoginForm">
-    <h2>Usar otro servicio para iniciar sesión.</h2>
+    <h2>Identifícate con Facebook</h2>
     @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
 </section>
 
