@@ -1,0 +1,46 @@
+@model IEnumerable<Recetas_1.Models.RECETA>
+
+@{
+    ViewBag.Title = "Resultados";
+}
+
+<h2>Recetas encontradas:</h2>
+<br />
+
+<div class="table">
+<table>
+    <tr>
+        <th>
+            Nombre de la Receta
+        </th>
+        <th />
+        <th>
+            Dificultad
+        </th>
+        <th />
+        <th>
+            Tiempo
+        </th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.ActionLink(@item.NOMBRE, "Details", new { id = item.IDRECETA })
+        </td>
+        <td />
+        <td>
+            @item.COMPLEJIDAD
+        </td>
+        <td />
+        <td>
+            @item.TIEMPO
+        </td>
+    </tr>
+}
+
+</table>
+</div>
+
+

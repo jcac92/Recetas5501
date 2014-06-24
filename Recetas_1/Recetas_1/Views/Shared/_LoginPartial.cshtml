@@ -1,13 +1,19 @@
-﻿@if (Request.IsAuthenticated) {
+﻿@if (Request.IsAuthenticated)
+{
     <text>
-        User.Identity.Name
-        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
-            @Html.AntiForgeryToken()
-            <a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
-        }
+    @User.Identity.Name
+    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+    {
+        @Html.AntiForgeryToken()
+        <a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
+    }
     </text>
-} else {
-    <ul>
-        <li>@Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+}
+else
+{
+    using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+    @Html.AntiForgeryToken()
+        <button type="submit" name="provider" value="facebook" title="Identifícate con Facebook" style="background: url('@Url.Content("~/Images/buttonLogin.png")') no-repeat top right; height:38px; width:192px; border:none"></button>
+    }
 }

@@ -64,3 +64,5 @@ C:\Users\equipo1\TEC\2014 I Semestre\Diseño de Software\Proyecto\Pruebas\Receta
 C:\Users\equipo1\TEC\2014 I Semestre\Diseño de Software\Proyecto\Pruebas\Recetas_1\Recetas_1\bin\es\WebMatrix.WebData.resources.dll
 C:\Users\equipo1\TEC\2014 I Semestre\Diseño de Software\Proyecto\Pruebas\Recetas_1\Recetas_1\obj\Debug\Recetas_1.dll
 C:\Users\equipo1\TEC\2014 I Semestre\Diseño de Software\Proyecto\Pruebas\Recetas_1\Recetas_1\obj\Debug\Recetas_1.pdb
+C:\Users\equipo1\TEC\2014 I Semestre\Diseño de Software\Proyecto\Pruebas\Recetas_1\Recetas_1\bin\Facebook.dll
+C:\Users\equipo1\TEC\2014 I Semestre\Diseño de Software\Proyecto\Pruebas\Recetas_1\Recetas_1\bin\Facebook.xml

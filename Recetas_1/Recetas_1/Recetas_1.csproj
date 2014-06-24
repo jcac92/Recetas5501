@@ -46,6 +46,9 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Facebook">
+      <HintPath>..\packages\Facebook.6.6.0\lib\net45\Facebook.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -173,8 +176,6 @@
     <Compile Include="Controllers\INGREDIENTEController.cs" />
     <Compile Include="Controllers\PASOController.cs" />
     <Compile Include="Controllers\RECETAController.cs" />
-    <Compile Include="Controllers\ROLINTERNACIONALController.cs" />
-    <Compile Include="Controllers\ROLNACIONALController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -277,7 +278,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
-    <Content Include="favicon.ico" />
+    <Content Include="favicon.png" />
     <Content Include="Global.asax" />
     <EntityDeploy Include="Models\Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -376,18 +377,8 @@
     <Content Include="Views\RECETA\Details.cshtml" />
     <Content Include="Views\RECETA\Index.cshtml" />
     <Content Include="Views\RECETA\_CreateOrEdit.cshtml" />
-    <Content Include="Views\ROLNACIONAL\Create.cshtml" />
-    <Content Include="Views\ROLNACIONAL\Edit.cshtml" />
-    <Content Include="Views\ROLNACIONAL\Delete.cshtml" />
-    <Content Include="Views\ROLNACIONAL\Details.cshtml" />
-    <Content Include="Views\ROLNACIONAL\Index.cshtml" />
-    <Content Include="Views\ROLNACIONAL\_CreateOrEdit.cshtml" />
-    <Content Include="Views\ROLINTERNACIONAL\Create.cshtml" />
-    <Content Include="Views\ROLINTERNACIONAL\Edit.cshtml" />
-    <Content Include="Views\ROLINTERNACIONAL\Delete.cshtml" />
-    <Content Include="Views\ROLINTERNACIONAL\Details.cshtml" />
-    <Content Include="Views\ROLINTERNACIONAL\Index.cshtml" />
-    <Content Include="Views\ROLINTERNACIONAL\_CreateOrEdit.cshtml" />
+    <Content Include="Views\RECETA\Results.cshtml" />
+    <Content Include="Views\RECETA\Buscar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

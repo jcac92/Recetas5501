@@ -1,25 +1,30 @@
 @model Recetas_1.Models.RECETA
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editar receta";
 }
 
-<h2>Edit</h2>
+<h1>@Model.NOMBRE</h1>
+<br />
+<h2>Edita la información de tu receta</h2>
+<br />
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Edit", "RECETA")) {
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>RECETA</legend>
 
         @Html.HiddenFor(model => model.IDRECETA)
+        @Html.HiddenFor(model => model.USERID)
+        @Html.HiddenFor(model => model.PAIS)
 		@Html.Partial("_CreateOrEdit", Model)
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Actualizar Receta" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Regresar a Mi lista de Recetas", "Index")
 </div>

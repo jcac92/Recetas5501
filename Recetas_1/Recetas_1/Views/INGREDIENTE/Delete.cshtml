@@ -1,32 +1,27 @@
 @model Recetas_1.Models.INGREDIENTE
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Eliminar ingrediente";
 }
 
-<h2>Delete</h2>
+<h2>Eliminar Ingrediente</h2>
+<br />
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>¿Segur@@ que deseas eliminar este ingrediente?</h3>
+<br />
+
 <fieldset>
     <legend>INGREDIENTE</legend>
 
-    <div class="display-label">IDPASO</div>
-    <div class="display-field">@Model.IDPASO</div>
-
-    <div class="display-label">NOMBRE</div>
     <div class="display-field">@Model.NOMBRE</div>
 
-    <div class="display-label">CANTIDAD</div>
-    <div class="display-field">@Model.CANTIDAD</div>
-
-    <div class="display-label">PASO</div>
-    <div class="display-field">@Html.DisplayTextFor(_ => Model.PASO).ToString()</div>
 </fieldset>
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
+        <input type="submit" value="Eliminar Ingrediente" />
+    </p>
+    
+    <p>
+        @Html.ActionLink("Regresar al Paso", "Details", "PASO", new { id = Model.IDPASO }, null)
     </p>
 }
-
-

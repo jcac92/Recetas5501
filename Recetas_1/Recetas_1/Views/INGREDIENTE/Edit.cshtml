@@ -1,10 +1,11 @@
 @model Recetas_1.Models.INGREDIENTE
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editar ingrediente";
 }
 
-<h2>Edit</h2>
+<h2>Edita este ingrediente</h2>
+<br />
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
@@ -12,14 +13,15 @@
         <legend>INGREDIENTE</legend>
 
         @Html.HiddenFor(model => model.IDINGREDIENTE)
+        @Html.HiddenFor(model => model.IDPASO)
 		@Html.Partial("_CreateOrEdit", Model)
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Actualizar Ingrediente" />
         </p>
     </fieldset>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+<p>
+    @Html.ActionLink("Regresar al Paso", "Details", "PASO", new { id = Model.IDPASO }, null)
+</p>

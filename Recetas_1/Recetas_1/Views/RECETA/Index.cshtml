@@ -5,10 +5,13 @@
 }
 
 <h2>Mi lista de Recetas</h2>
+<br />
 
 <p>
     @Html.ActionLink("Crea una nueva receta", "Create")
 </p>
+<br />
+
 <div class="table">
 <table>
     <tr>
@@ -20,15 +23,16 @@
         </th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
             @item.NOMBRE
         </td>
         <td>
-			@Html.ActionLink("Editar", "Edit", new { id=item.IDRECETA }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.IDRECETA }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.IDRECETA })
+			@Html.ActionLink("Editar", "Edit", new { id = item.IDRECETA }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.IDRECETA }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.IDRECETA })
         </td>
     </tr>
 }

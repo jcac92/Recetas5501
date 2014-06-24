@@ -223,6 +223,10 @@ namespace Recetas_1.Controllers
                 return RedirectToAction("ExternalLoginFailure");
             }
 
+            //Guardamos el AccessToken en la Sesión
+            Session["accesstoken"] = result.ExtraData["accesstoken"];
+            Session["id"] = result.ExtraData["id"];
+
             if (OAuthWebSecurity.Login(result.Provider, result.ProviderUserId, createPersistentCookie: false))
             {
                 return RedirectToLocal(returnUrl);

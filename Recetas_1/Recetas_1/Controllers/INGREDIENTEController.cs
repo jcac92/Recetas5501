@@ -10,15 +10,18 @@ namespace Recetas_1.Controllers
     public class INGREDIENTEController : Controller
     {
 		private readonly IINGREDIENTERepository ingredienteRepository;
+        private readonly IPASORepository pasoRepository;
 
 		// If you are using Dependency Injection, you can delete the following constructor
         public INGREDIENTEController() : this(new INGREDIENTERepository())
         {
+            this.pasoRepository = new PASORepository();
         }
 
         public INGREDIENTEController(IINGREDIENTERepository ingredienteRepository)
         {
 			this.ingredienteRepository = ingredienteRepository;
+            this.pasoRepository = new PASORepository();
         }
 
         //
@@ -40,8 +43,9 @@ namespace Recetas_1.Controllers
         //
         // GET: /INGREDIENTE/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int idPaso)
         {
+            ViewBag.idPaso = idPaso;
             return View();
         } 
 
@@ -54,7 +58,7 @@ namespace Recetas_1.Controllers
             if (ModelState.IsValid) {
                 ingredienteRepository.InsertOrUpdate(ingrediente);
                 ingredienteRepository.Save();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", new { idPaso = ingrediente.IDPASO });
             } else {
 				return View();
 			}
@@ -77,7 +81,8 @@ namespace Recetas_1.Controllers
             if (ModelState.IsValid) {
                 ingredienteRepository.InsertOrUpdate(ingrediente);
                 ingredienteRepository.Save();
-                return RedirectToAction("Index");
+
+                return RedirectToAction("Details", "PASO", new { id = ingrediente.IDPASO });
             } else {
 				return View();
 			}
@@ -97,10 +102,21 @@ namespace Recetas_1.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
+            int idPaso = ingredienteRepository.Find(id).IDPASO;
+
             ingredienteRepository.Delete(id);
             ingredienteRepository.Save();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", "PASO", new { id = idPaso });
+        }
+
+        //
+        // GET: /INGREDIENTE/siguientePaso
+
+        public ActionResult siguientePaso(int idPaso)
+        {
+            PASO estePaso = pasoRepository.Find(idPaso);
+            return RedirectToAction("Create", "PASO", new { idReceta = estePaso.IDRECETA });
         }
 
         protected override void Dispose(bool disposing)

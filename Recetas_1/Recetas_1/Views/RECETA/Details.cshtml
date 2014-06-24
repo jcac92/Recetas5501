@@ -1,13 +1,13 @@
 @model Recetas_1.Models.RECETA
 
 @{
-    ViewBag.Title = "Recetas";
+    ViewBag.Title = "Detalles receta";
 }
 
 <h1>@Model.NOMBRE</h1>
 <br/>
-<img src=@Model.FOTO />
-
+<img src=@Model.FOTO style="max-width: 100%" />
+<br />
 <h5>Porciones</h5>
     <div class="display-field">@Model.PORCIONES</div>
 
@@ -20,6 +20,9 @@
 <h5>País de origen</h5>
     <div class="display-field">@Model.PAIS</div>
 
+<h5>@ViewBag.campoOrigen</h5>
+    <div class="display-field">@ViewBag.valorOrigen</div>
+
 <h5>Preparación</h5>
     <div class="display-field">@Model.TIPOPREPARACION</div>
 
@@ -28,6 +31,7 @@
 {
     <div class="display-field">@item.NOMBRE</div>
 }
+<br />
 
 <h3>Lista de Ingredientes</h3>
 <table>
@@ -46,11 +50,14 @@
 </table>
 
 <p>
-    @Html.ActionLink("Lista de Pasos", "Pasos", new { id=Model.IDRECETA })
+    @Html.ActionLink("Ver lista de Pasos", "Pasos", new { id=Model.IDRECETA })
 </p>
 
 <p>
-    @Html.ActionLink("Editar receta", "Edit", new { id=Model.IDRECETA }) |
+    @Html.ActionLink("Editar receta", "Edit", new { id=Model.IDRECETA })
+</p>
+
+<p>
     @Html.ActionLink("Regresar a Mi lista de Recetas", "Index")
 </p>
 

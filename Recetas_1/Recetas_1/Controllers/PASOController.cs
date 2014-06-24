@@ -11,15 +11,18 @@ namespace Recetas_1.Controllers
     public class PASOController : Controller
     {
 		private readonly IPASORepository pasoRepository;
+        private readonly IRECETARepository recetaRepository;
 
 		// If you are using Dependency Injection, you can delete the following constructor
         public PASOController() : this(new PASORepository())
         {
+            this.recetaRepository = new RECETARepository();
         }
 
         public PASOController(IPASORepository pasoRepository)
         {
 			this.pasoRepository = pasoRepository;
+            this.recetaRepository = new RECETARepository();
         }
 
         //
@@ -27,9 +30,13 @@ namespace Recetas_1.Controllers
 
         public ViewResult Index(int idReceta)
         {
+            string nombreReceta = recetaRepository.Find(idReceta).NOMBRE;
+
             IEnumerable<PASO> pasosReceta = (from p in pasoRepository.All
                                              where p.IDRECETA == idReceta
                                              select p);
+            ViewBag.idReceta = idReceta;
+            ViewBag.nombreReceta = nombreReceta;
             return View(pasosReceta);
         }
 
@@ -44,18 +51,33 @@ namespace Recetas_1.Controllers
         //
         // GET: /PASO/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int idReceta)
         {
-            return View();
+            PASO nuevo = new PASO();
+            nuevo.IDRECETA = idReceta;
+            return View(nuevo);
         } 
 
         //
         // POST: /PASO/Create
 
         [HttpPost]
-        public ActionResult Create(PASO paso, HttpPostedFileBase fotoPaso, bool ultimoPaso)
+        public ActionResult Create(PASO paso, HttpPostedFileBase fotoPaso)
         {
             if (ModelState.IsValid) {
+
+                //Variable para el número de paso
+                int num = 0;
+                try
+                {
+                    //Num último paso insertado
+                    num = (from p in pasoRepository.All
+                           where p.IDRECETA == paso.IDRECETA
+                           select p.NUMEROPASO)
+                          .Max();
+                }
+                catch { }
+                paso.NUMEROPASO = num + 1;
 
                 //Lógica para insertar el nuevo Paso
                 pasoRepository.InsertOrUpdate(paso);
@@ -67,12 +89,12 @@ namespace Recetas_1.Controllers
                               .Max();
 
                 //Lógica para insertar la imagen
-                string nombreArchivo = Convert.ToString(idPaso) + Path.GetExtension(fotoPaso.FileName);
-
                 if (fotoPaso != null)
                 {
                     if (fotoPaso.ContentLength > 0)
                     {
+                        string nombreArchivo = Convert.ToString(idPaso) + Path.GetExtension(fotoPaso.FileName);
+
                         //Subir archivo de foto
                         string rutaArchivo = Path.Combine(Server.MapPath("~/Images/Pasos"), nombreArchivo);
                         fotoPaso.SaveAs(rutaArchivo);
@@ -86,11 +108,7 @@ namespace Recetas_1.Controllers
                 }
                 ///////////////////////////////
 
-                //Regresar a las recetas si es el último paso
-                if (ultimoPaso)
-                    return RedirectToAction("Index", "RECETA");
-                else
-                    return RedirectToAction("Create");
+                return RedirectToAction("Create", "INGREDIENTE", new { idPaso = idPaso });
 
             } else {
 				return View();
@@ -114,7 +132,7 @@ namespace Recetas_1.Controllers
             if (ModelState.IsValid) {
                 pasoRepository.InsertOrUpdate(paso);
                 pasoRepository.Save();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { idReceta = paso.IDRECETA });
             } else {
 				return View();
 			}
@@ -134,10 +152,15 @@ namespace Recetas_1.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
+            //ID de la receta a la que pertenecía el Paso a eliminar
+            int idReceta = pasoRepository.Find(id).IDRECETA;
+
+            //Lógica para eliminar el Paso
             pasoRepository.Delete(id);
             pasoRepository.Save();
 
-            return RedirectToAction("Index");
+            //Regresa a la lista de Pasos de la Recetaoriginal
+            return RedirectToAction("Index", new { idReceta = idReceta });
         }
 
         protected override void Dispose(bool disposing)

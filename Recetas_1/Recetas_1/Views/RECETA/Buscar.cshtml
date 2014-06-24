@@ -1,0 +1,51 @@
+@{
+    ViewBag.Title = "Búsqueda";
+}
+
+<h2>Búsqueda de Recetas</h2>
+<br />
+
+@using (Html.BeginForm("buscarNombre", "RECETA"))
+{
+    <fieldset>
+        <legend>RECETA</legend>
+
+        <div class="editor-label">Buscar por nombre</div>
+        <div class="editor-field">
+            <input type="text" id="nombre" name="nombre" required="required" /><input type="submit" value="Buscar" />
+        </div>
+    </fieldset>
+}
+<br />
+
+@using (Html.BeginForm("buscarPais", "RECETA"))
+{
+    <fieldset>
+        <legend>RECETA</legend>
+
+        <div class="editor-label">Buscar por país de origen</div>
+        <div class="editor-field">
+            <input type="text" id="pais" name="pais" required="required" /><input type="submit" value="Buscar" />
+        </div>
+    </fieldset>
+}
+<br />
+
+@using (Html.BeginForm("buscarEtiqueta", "RECETA"))
+{
+    <fieldset>
+        <legend>RECETA</legend>
+
+        <div class="editor-label">Buscar por etiqueta</div>
+        <div class="editor-field">
+            <input type="text" id="etiqueta" name="etiqueta" required="required" /><input type="submit" value="Buscar" />
+        </div>
+    </fieldset>
+}
+
+
+<div>
+    @Html.ActionLink("Regresar al Inicio", "Index", "Home")
+</div>
+
+

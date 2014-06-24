@@ -9,9 +9,5 @@ namespace Recetas_1.Models
     {
         public int IDRECETA { get; set; }
 
-        public int getIdReceta()
-        {
-            return this.IDRECETA;
-        }
     }
 }

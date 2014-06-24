@@ -2,58 +2,52 @@
 
 @* This partial view defines form fields that will appear when creating and editing entities *@
 
-<div class="editor-label">
-    @Html.LabelFor(model => model.USERID)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.USERID)
-    @Html.ValidationMessageFor(model => model.USERID)
-</div>
-
-<div class="editor-label">
-    @Html.LabelFor(model => model.NOMBRE)
-</div>
+<div class="editor-label">Nombre</div>
 <div class="editor-field">
     @Html.EditorFor(model => model.NOMBRE)
     @Html.ValidationMessageFor(model => model.NOMBRE)
 </div>
 
-<div class="editor-label">
-    @Html.LabelFor(model => model.PORCIONES)
-</div>
+<div class="editor-label">Cantidad de porciones</div>
 <div class="editor-field">
     @Html.EditorFor(model => model.PORCIONES)
     @Html.ValidationMessageFor(model => model.PORCIONES)
 </div>
 
-<div class="editor-label">
-    @Html.LabelFor(model => model.COMPLEJIDAD)
-</div>
+    @{
+List<SelectListItem> complejidades = new List<SelectListItem>{
+            new SelectListItem{ Text = "Baja", Value = "Baja", Selected = true},
+            new SelectListItem{ Text = "Media", Value = "Media"},
+            new SelectListItem{ Text = "Alta", Value = "Alta"}};
+    }
+<div class="editor-label">Dificultad de preparación</div>
 <div class="editor-field">
-    @Html.EditorFor(model => model.COMPLEJIDAD)
-    @Html.ValidationMessageFor(model => model.COMPLEJIDAD)
+    @Html.DropDownListFor(model => model.COMPLEJIDAD, complejidades)
 </div>
 
-<div class="editor-label">
-    @Html.LabelFor(model => model.TIEMPO)
-</div>
+<div class="editor-label">Tiempo de preparación</div>
 <div class="editor-field">
     @Html.EditorFor(model => model.TIEMPO)
     @Html.ValidationMessageFor(model => model.TIEMPO)
 </div>
 
-<div class="editor-label">
-    @Html.LabelFor(model => model.TIPOPREPARACION)
-</div>
+    @{
+List<SelectListItem> preparaciones = new List<SelectListItem>{
+            new SelectListItem{ Text = "Ahumar", Value = "Ahumar"},
+            new SelectListItem{ Text = "Asar", Value = "Asar"},
+            new SelectListItem{ Text = "Congelar", Value = "Congelar"},
+            new SelectListItem{ Text = "Cocer", Value = "Cocer"},
+            new SelectListItem{ Text = "Freír", Value = "Freír"},
+            new SelectListItem{ Text = "Hervir", Value = "Hervir"},
+            new SelectListItem{ Text = "Hornear", Value = "Hornear"},
+            new SelectListItem{ Text = "Microondas", Value = "Microondas"},
+            new SelectListItem{ Text = "Plancha", Value = "Plancha"},
+            new SelectListItem{ Text = "Refrigerar", Value = "Refrigerar"},
+            new SelectListItem{ Text = "Vapor", Value = "Vapor"},
+            new SelectListItem{ Text = "Otro", Value = "Otro", Selected = true}};
+    }
+<div class="editor-label">Tipo de preparación</div>
 <div class="editor-field">
-    @Html.EditorFor(model => model.TIPOPREPARACION)
-    @Html.ValidationMessageFor(model => model.TIPOPREPARACION)
+    @Html.DropDownListFor(model => model.TIPOPREPARACION, preparaciones)
 </div>
 
-<div class="editor-label">
-    @Html.LabelFor(model => model.PAIS)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.PAIS)
-    @Html.ValidationMessageFor(model => model.PAIS)
-</div>

@@ -17,11 +17,9 @@ namespace Recetas_1.Models
     {
         [Key]
         public int IDROLINTERNACIONAL { get; set; }
-        //public int IDRECETA { get; set; }
         public string REGION { get; set; }
 
-        public ROLINTERNACIONAL()
-        { }
+        public ROLINTERNACIONAL() { }
 
         public ROLINTERNACIONAL(int id, int idReceta, string region)
         {

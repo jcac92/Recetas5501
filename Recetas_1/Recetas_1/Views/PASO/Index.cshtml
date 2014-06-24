@@ -4,19 +4,11 @@
     ViewBag.Title = "Pasos";
 }
 
-<h2>Lista de Pasos</h2>
+<h1>@ViewBag.nombreReceta</h1>
+
+<h3>Procedimientos:</h3>
 
 <table>
-    <tr>
-        <th>
-        </th>
-        <th>
-            Detalles
-        </th>
-        <th>
-            Acciones
-        </th>
-    </tr>
 
 @foreach (var item in Model) {
     <tr>
@@ -35,4 +27,7 @@
 
 </table>
 
+<p>
+    @Html.ActionLink("Regresar a la Receta", "Details", "RECETA", new { id=ViewBag.idReceta }, null)
+</p>
 

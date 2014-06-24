@@ -102,7 +102,13 @@ h5, h6 {
     clear: both;
     padding-bottom: 35px;
     height: auto;
-    min-height: 410px;
+    min-height: 412px;
+}
+
+.multi-line {
+    height:auto;
+    width:300px;
+    overflow:hidden;
 }
 
 .main-content {
@@ -381,11 +387,12 @@ aside {
     }
 
 #socialLoginList button {
-     background-image: url('../Images/facebook.png');
-     width: 256px;
-     height: 256px;
-     background-color: rgba(255, 255, 255, 0.00);
+     margin-bottom: 12px;
+     background: url("../Images/buttonLogin.png") no-repeat;
+     height: 38px;
+     width: 192px;
      border: none;
+     color:transparent;
 }
 
 #logoutForm {
@@ -544,6 +551,7 @@ table {
     border-spacing: 0;
     margin-top: 0.75em;
     border: 0 none;
+    max-width:1000px;
 }
 
 th {
@@ -592,6 +600,7 @@ th {
 td {
     padding: 0.25em 2em 0.25em 0em;
     border: 0 none;
+    height:auto;
 }
 
 tr.pager td {
@@ -678,6 +687,12 @@ tr.pager td {
         padding-left: 10px;
     }
 
+    .multi-line {
+        height: auto;
+        width: 90%;
+        overflow: hidden;
+    }
+
     .featured .content-wrapper {
         padding: 10px;
     }
@@ -747,6 +762,22 @@ tr.pager td {
         margin-left: 0;
         float: none;
         width: auto;
+    }
+
+    /* tables
+    ----------------------------------------------------------*/
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin-top: 0.75em;
+        border: 0 none;
+        max-width:90%;
+    }
+    
+    td {
+        padding: 0.25em 2em 0.25em 0em;
+        border: 0 none;
+        height:auto;
     }
 
 

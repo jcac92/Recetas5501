@@ -25,6 +25,7 @@ namespace Recetas_1.Models
         [Key]
         public int IDRECETA { get; set; }
         public int USERID { get; set; }
+        [StringLength(100)]
         [Required(ErrorMessage = "Se requiere un nombre para la receta")]
         public string NOMBRE { get; set; }
         [Range(1, 5000, ErrorMessage = "El número de porciones debe ser mayor a 1")]

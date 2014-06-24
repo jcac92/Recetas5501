@@ -1,33 +1,20 @@
 @model Recetas_1.Models.PASO
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Paso " + @Model.NUMEROPASO;
 }
 
-<h1>@Model.RECETA.NOMBRE</h1>
+<h1>Paso @Model.NUMEROPASO</h1>
+<br />
 
-<h2>Procedimientos:</h2>
+<h3>Descripción:</h3>
+<br />
 
 <fieldset>
     <legend>PASO</legend>
 
-    <div class="display-label">IDRECETA</div>
-    <div class="display-field">@Model.IDRECETA</div>
-
-    <div class="display-label">NUMEROPASO</div>
-    <div class="display-field">@Model.NUMEROPASO</div>
-
-    <div class="display-label">DESCRIPCION</div>
     <div class="display-field">@Model.DESCRIPCION</div>
 
-    <div class="display-label">FOTO</div>
-    <div class="display-field">@Model.FOTO</div>
-
-    <div class="display-label">INGREDIENTE</div>
-    <div class="display-field">@(Model.INGREDIENTE == null ? "None" : Model.INGREDIENTE.Count.ToString())</div>
-
-    <div class="display-label">RECETA</div>
-    <div class="display-field">@Html.DisplayTextFor(_ => Model.RECETA).ToString()</div>
 </fieldset>
 
 <h3>Ingredientes necesarios:</h3>
@@ -42,13 +29,24 @@
         <td>
             @item.NOMBRE
         </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", "INGREDIENTE", new { id=item.IDINGREDIENTE }, null) |
+            @Html.ActionLink("Eliminar", "Delete", "INGREDIENTE", new { id=item.IDINGREDIENTE }, null)
+        </td>
     </tr>
 }
 </table>
+<br />
+
+<img src=@Model.FOTO style="max-width: 100%" />
+<br />
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.IDPASO }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar este Paso", "Edit", new { id=Model.IDPASO })
+</p>
+
+<p>
+    @Html.ActionLink("Regresar a la lista de Pasos", "Index", new { idReceta = Model.IDRECETA })
 </p>
 
 

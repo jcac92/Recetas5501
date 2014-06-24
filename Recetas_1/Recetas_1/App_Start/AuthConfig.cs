@@ -22,9 +22,13 @@ namespace Recetas_1
             //    consumerKey: "",
             //    consumerSecret: "");
 
+            Dictionary<string, object> FacebookData = new Dictionary<string, object>();
+
             OAuthWebSecurity.RegisterFacebookClient(
                 appId: "124752004299427",
-                appSecret: "a500e7b597a3fde28819d7d3c29dc749");
+                appSecret: "a500e7b597a3fde28819d7d3c29dc749",
+                displayName: "Facebook",
+                extraData: FacebookData);
 
             //OAuthWebSecurity.RegisterGoogleClient();
         }

@@ -2,27 +2,15 @@
 
 @* This partial view defines form fields that will appear when creating and editing entities *@
 
-<div class="editor-label">
-    @Html.LabelFor(model => model.IDPASO)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.IDPASO)
-    @Html.ValidationMessageFor(model => model.IDPASO)
-</div>
-
-<div class="editor-label">
-    @Html.LabelFor(model => model.NOMBRE)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.NOMBRE)
-    @Html.ValidationMessageFor(model => model.NOMBRE)
-</div>
-
-<div class="editor-label">
-    @Html.LabelFor(model => model.CANTIDAD)
-</div>
+<div class="editor-label">Cantidad</div>
 <div class="editor-field">
     @Html.EditorFor(model => model.CANTIDAD)
     @Html.ValidationMessageFor(model => model.CANTIDAD)
+</div>
+
+<div class="editor-label">Ingrediente</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.NOMBRE)
+    @Html.ValidationMessageFor(model => model.NOMBRE)
 </div>
 

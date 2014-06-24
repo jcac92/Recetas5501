@@ -1,17 +1,26 @@
 @model Recetas_1.Models.PASO
 
 @{
-    ViewBag.Title = "Agregar paso";
+    ViewBag.Title = "Agregar pasos";
 }
 
 <h2>Agrega un nuevo paso</h2>
+<br />
+
+<div>
+    @Html.ActionLink("No agregar más pasos", "Index", "RECETA")
+</div>
+<br />
 
 @using (Html.BeginForm("Create", "PASO", FormMethod.Post, new { EncType="multipart/form-data"})) {
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>PASO</legend>
 
+        @Html.HiddenFor(model => model.IDRECETA)
+
 		@Html.Partial("_CreateOrEdit", Model)
+
 
         <div class="editor-label">
             <label for="fotoPaso">Selecciona una imagen para el paso</label>
@@ -19,19 +28,11 @@
         <div class="editor-field">
             <input type="file" id="fotoPaso" name="fotoPaso" />
         </div>
-
-        <div class="editor-label">
-            <label for="ultimoPaso">¿último paso?</label>@Html.CheckBox("ultimoPaso", new { data_val = "true" })
-        </div>
         
         <p>
-            <input type="submit" value="Guardar paso" />
+            <input type="submit" value="Crear Paso" />
         </p>
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Ver la lista de Pasos", "Index")
-</div>
 
 

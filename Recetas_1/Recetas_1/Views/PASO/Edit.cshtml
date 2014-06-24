@@ -1,25 +1,29 @@
 @model Recetas_1.Models.PASO
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editar paso";
 }
 
-<h2>Edit</h2>
+<h2>Edita este paso</h2>
+<br />
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>PASO</legend>
 
+        @Html.HiddenFor(model => model.IDRECETA)
+        @Html.HiddenFor(model => model.NUMEROPASO)
         @Html.HiddenFor(model => model.IDPASO)
-		@Html.Partial("_CreateOrEdit", Model)
+        @Html.Partial("_CreateOrEdit", Model)
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Actualizar Paso" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Regresar a la lista de Pasos", "Index", new { idReceta=Model.IDRECETA })
 </div>

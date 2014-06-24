@@ -1,10 +1,11 @@
 @model Recetas_1.Models.RECETA
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Crear receta";
 }
 
-<h2>Create</h2>
+<h2>Crea una nueva Receta</h2>
+<br />
 
 @using (Html.BeginForm("Create", "RECETA", FormMethod.Post, new { EncType="multipart/form-data"}))
 {
@@ -12,7 +13,15 @@
     <fieldset>
         <legend>RECETA</legend>
 
+        @Html.HiddenFor(model => model.IDRECETA)
+        @Html.HiddenFor(model => model.USERID)
         @Html.Partial("_CreateOrEdit", Model)
+
+        <div class="editor-label">País de origen</div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PAIS)
+            @Html.ValidationMessageFor(model => model.PAIS)
+        </div>
 
         @{
     List<SelectListItem> provincias = new List<SelectListItem>{
@@ -24,9 +33,7 @@
                 new SelectListItem{ Text = "Puntarenas", Value = "Puntarenas"},
                 new SelectListItem{ Text = "Limón", Value = "Limón"}};
         }
-        <div class="editor-label">
-            <label for="provincia">Selecciona la provincia (Si tu receta es de Costa Rica)</label>
-        </div>
+        <div class="editor-label">Selecciona la provincia (Si tu receta es de Costa Rica)</div>
         <div class="editor-field">
             @Html.DropDownList("provincia", provincias)
         </div>
@@ -42,22 +49,23 @@
                 new SelectListItem{ Text = "Asia", Value = "Asia"},
                 new SelectListItem{ Text = "Oceanía", Value = "Oceanía"}};
         }
-        <div class="editor-label">
-            <label for="region">Selecciona la región</label>
-        </div>
+        <div class="editor-label">Selecciona la región</div>
         <div class="editor-field">
             @Html.DropDownList("region", regiones)
         </div>
 
-        <div class="editor-label">
-            <label for="fotoReceta">Selecciona una imagen para la receta</label>
-        </div>
+        <div class="editor-label">Selecciona una imagen para la receta</div>
         <div class="editor-field">
             <input type="file" id="fotoReceta" name="fotoReceta" />
         </div>
 
+        <div class="editor-label">Escriba etiquetas separadas por comas</div>
+        <div class="editor-field">
+            <input type="text" id="etiquetas" name="etiquetas" />
+        </div>
+
         <p>
-            <input type="submit" value="Crear" />
+            <input type="submit" value="Crear Receta" />
         </p>
     </fieldset>
 }
